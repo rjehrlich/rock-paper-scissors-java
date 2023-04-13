@@ -1,2 +1,2 @@
-public interface Scores {
+public class Scores {
 }

@@ -1,7 +1,7 @@
 import java.util.Locale;
 import java.util.Scanner;
 
-public class HumanPlayer extends Player{
+public class HumanPlayer extends Player implements TwoPlayers{
     private Scanner input;
 
     public HumanPlayer() {
