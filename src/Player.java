@@ -1,23 +1,13 @@
 public abstract class Player {
     private String name;
     private String gameChoice;
-    public String[] rps = {"rock", "paper", "scissors"};
 
     public abstract void selectGameChoice();
 
     public Player() {}
-    public Player(String name, String gameChoice, String[] rps) {
+    public Player(String name, String gameChoice) {
         this.name = name;
         this.gameChoice = gameChoice;
-        this.rps = rps;
-    }
-
-    public String[] getRps() {
-        return rps;
-    }
-
-    public void setRps(String[] rps) {
-        this.rps = rps;
     }
 
     public String getName() {
