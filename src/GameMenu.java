@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class GameMenu {
+public class GameMenu implements Scores{
     public boolean gameRunning = false;
     private Scanner scan;
     private HumanPlayer humanPlayer;
@@ -26,7 +26,40 @@ public class GameMenu {
         while (gameRunning) {
             humanPlayer.selectGameChoice();
             computerPlayer.selectGameChoice();
-            break;
+            determineWinner();
+            displayWinner();
+            updateScores();
+            playAgain();
+            //break;
+        }
+    }
+
+    @Override
+    public void determineWinner() {
+        System.out.println("Checking winner");
+    }
+
+    @Override
+    public void displayWinner() {
+        System.out.println("showing winner");
+    }
+
+    @Override
+    public void updateScores() {
+        System.out.println("updating scores");
+    }
+
+    @Override
+    public void playAgain() {
+        String goAgainChoice;
+        System.out.println("Would you like to play another round? Yes or No");
+        goAgainChoice = scan.nextLine();
+        if (goAgainChoice.toLowerCase().equals("yes")) {
+            gameRunning = true;
+        } else {
+            gameRunning = false;
+            System.out.println("Thank you for playing!");
+            displayWinner();
         }
     }
 }
