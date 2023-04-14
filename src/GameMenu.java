@@ -1,10 +1,18 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class GameMenu implements Scores{
-    public boolean gameRunning = false;
+    public boolean gameRunning;
     private Scanner scan;
     private HumanPlayer humanPlayer;
     private ComputerPlayer computerPlayer;
+    private TwoPlayers player1;
+    private TwoPlayers player2;
+//    private int humanScore;
+//    private int computerScore;
+//    private int draws;
+    private Map<String, Integer> scoreMap;
     //game plays in a loop that will:
     //Request user selection and save it
     //Pick a random option (from computer)
@@ -14,6 +22,12 @@ public class GameMenu implements Scores{
         scan = new Scanner(System.in);
         humanPlayer = new HumanPlayer();
         computerPlayer = new ComputerPlayer();
+        //HashMap scoreMap is initialized with keys "humanScore", "computerScore", and "draws", and initial values of 0 for each.
+        scoreMap = new HashMap<>();
+        scoreMap.put("humanScore", 0);
+        scoreMap.put("computerScore", 0);
+        scoreMap.put("draws", 0);
+        gameRunning = true;
         startGame();
     }
 
@@ -28,9 +42,7 @@ public class GameMenu implements Scores{
             computerPlayer.selectGameChoice();
             determineWinner();
             displayWinner();
-            updateScores();
             playAgain();
-            //break;
         }
     }
 
@@ -38,6 +50,9 @@ public class GameMenu implements Scores{
     public void determineWinner() {
         String humanChoice = humanPlayer.getGameChoice();
         String computerChoice = computerPlayer.getGameChoice();
+        int humanScore = scoreMap.get("humanScore");
+        int computerScore = scoreMap.get("computerScore");
+        int draws = scoreMap.get("draws");
 
         //Win conditions:
             //rock beats scissors, paper beats rock, scissors beats paper
@@ -46,27 +61,28 @@ public class GameMenu implements Scores{
             (humanChoice.equals("paper") && computerChoice.equals("rock")) ||
             (humanChoice.equals("scissors") && computerChoice.equals("paper"))) {
             System.out.println(humanPlayer.getName() + " wins!");
+            humanScore++;
         }
         // Computer wins
         else if ((computerChoice.equals("rock") && humanChoice.equals("scissors")) ||
                 (computerChoice.equals("paper") && humanChoice.equals("rock")) ||
                 (computerChoice.equals("scissors") && humanChoice.equals("paper"))) {
             System.out.println("Computer wins!");
+            computerScore++;
         }
         // Draw
         else {
             System.out.println("It's a draw!");
+            draws++;
         }
+        scoreMap.put("humanScore", humanScore);
+        scoreMap.put("computerScore", computerScore);
+        scoreMap.put("draws", draws);
     }
 
     @Override
     public void displayWinner() {
-        System.out.println("showing winner");
-    }
-
-    @Override
-    public void updateScores() {
-        System.out.println("updating scores");
+        System.out.println("Score History: " + scoreMap.toString());
     }
 
     @Override
