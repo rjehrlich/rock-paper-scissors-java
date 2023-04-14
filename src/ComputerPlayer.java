@@ -31,5 +31,6 @@ public class ComputerPlayer extends Player{
         // Generate random strings in range of the rps array
         computerMove = rps[new Random().nextInt(rps.length)];
         System.out.println("Computer chose: " + computerMove);
+        setGameChoice(computerMove);
     }
 }

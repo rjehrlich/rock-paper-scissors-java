@@ -8,12 +8,29 @@ public class HumanPlayer extends Player implements TwoPlayers{
         input = new Scanner(System.in);
     }
 
+    public Scanner getInput() {
+        return input;
+    }
+
+    public void setInput(Scanner input) {
+        this.input = input;
+    }
+
     @Override
     public void selectGameChoice() {
         System.out.println("Please enter your game choice:\n"+
-                "1. Rock\n"+
-                "2. Paper\n"+
-                "3. Scissors\n");
-        input.nextLine().toLowerCase();
+                "Rock\n"+
+                "Paper\n"+
+                "Scissors\n");
+        String choice = input.nextLine();
+        switch (choice.toLowerCase()) {
+            case "rock" -> setGameChoice("rock");
+            case "paper" -> setGameChoice("paper");
+            case "scissors" -> setGameChoice("scissors");
+            default -> {
+                System.out.println("Invalid choice. Please try again.");
+                selectGameChoice();
+            }
+        }
     }
 }

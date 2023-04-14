@@ -36,7 +36,27 @@ public class GameMenu implements Scores{
 
     @Override
     public void determineWinner() {
-        System.out.println("Checking winner");
+        String humanChoice = humanPlayer.getGameChoice();
+        String computerChoice = computerPlayer.getGameChoice();
+
+        //Win conditions:
+            //rock beats scissors, paper beats rock, scissors beats paper
+        // Human wins
+        if ((humanChoice.equals("rock") && computerChoice.equals("scissors")) ||
+            (humanChoice.equals("paper") && computerChoice.equals("rock")) ||
+            (humanChoice.equals("scissors") && computerChoice.equals("paper"))) {
+            System.out.println(humanPlayer.getName() + " wins!");
+        }
+        // Computer wins
+        else if ((computerChoice.equals("rock") && humanChoice.equals("scissors")) ||
+                (computerChoice.equals("paper") && humanChoice.equals("rock")) ||
+                (computerChoice.equals("scissors") && humanChoice.equals("paper"))) {
+            System.out.println("Computer wins!");
+        }
+        // Draw
+        else {
+            System.out.println("It's a draw!");
+        }
     }
 
     @Override
