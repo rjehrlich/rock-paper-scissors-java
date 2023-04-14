@@ -32,7 +32,8 @@ My approach overview will go here.
 
 ***
 ## Mistakes or Things I Learned Along the Way
-* 
+* I made a lot of mistakes along the way on this project. The biggest hurdle for
+me was understanding Scope within the context of classes and subclasses
 
 ***
 ## Unsolved Problems/ What I Would Work On Next

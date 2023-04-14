@@ -9,20 +9,14 @@ public class GameMenu implements Scores{
     private ComputerPlayer computerPlayer;
     private TwoPlayers player1;
     private TwoPlayers player2;
-//    private int humanScore;
-//    private int computerScore;
-//    private int draws;
     private Map<String, Integer> scoreMap;
-    //game plays in a loop that will:
-    //Request user selection and save it
-    //Pick a random option (from computer)
-    //Calculate the game result
-    //display the game results and ask the user if play again
+
     public GameMenu() {
         scan = new Scanner(System.in);
         humanPlayer = new HumanPlayer();
         computerPlayer = new ComputerPlayer();
-        //HashMap scoreMap is initialized with keys "humanScore", "computerScore", and "draws", and initial values of 0 for each.
+        //HashMap scoreMap is initialized with keys "humanScore", "computerScore", and "draws"
+            // initial values of 0 for each
         scoreMap = new HashMap<>();
         scoreMap.put("humanScore", 0);
         scoreMap.put("computerScore", 0);
@@ -31,7 +25,11 @@ public class GameMenu implements Scores{
         startGame();
     }
 
-
+    //game plays in a loop that will:
+    //Request user selection and save it
+    //Pick a random option (from computer)
+    //Calculate the game result
+    //display the game results and ask the user if play again
     public void startGame() {
         gameRunning = true;
         System.out.println("Enter your name to start the game");
@@ -46,6 +44,12 @@ public class GameMenu implements Scores{
         }
     }
 
+    /**
+     * determine winner by:
+     *      assign variables to populate the game choice method
+     *      assign variables to get the scores from scoreMap hashmap
+     *      check against the win conditions of the game
+     */
     @Override
     public void determineWinner() {
         String humanChoice = humanPlayer.getGameChoice();
@@ -85,6 +89,10 @@ public class GameMenu implements Scores{
         System.out.println("Score History: " + scoreMap.toString());
     }
 
+    /**
+     * playAgain - allow the player to play another round,
+     * update the gameRunning so that game loop will exit
+     */
     @Override
     public void playAgain() {
         String goAgainChoice;

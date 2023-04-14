@@ -5,6 +5,13 @@ public abstract class Player {
     public abstract void selectGameChoice();
 
     public Player() {}
+
+    /**
+     * constructor ensuring every player(subclass) will have:
+     * @param name
+     * @param gameChoice
+     * those will be returned, set, and able to get in the GameMenu functionality
+     */
     public Player(String name, String gameChoice) {
         this.name = name;
         this.gameChoice = gameChoice;

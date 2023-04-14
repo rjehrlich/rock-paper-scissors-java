@@ -16,6 +16,11 @@ public class HumanPlayer extends Player implements TwoPlayers{
         this.input = input;
     }
 
+    /**
+     * allow user to choose their game choice
+     *      set the game choice in our setGameChoice method so that it is returned later
+     *      check their choices against cases and validate a valid input
+     */
     @Override
     public void selectGameChoice() {
         System.out.println("Please enter your game choice:\n"+
